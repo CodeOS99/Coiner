@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://uumwrmnqm851"]
+[gd_scene load_steps=8 format=3 uid="uid://uumwrmnqm851"]
+
+[ext_resource type="PackedScene" uid="uid://ki78iqhlmc1a" path="res://scenes/player.tscn" id="1_4t4f1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qrv2r"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -13,8 +15,17 @@ sky = SubResource("Sky_m5h1w")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iyym7"]
+albedo_color = Color(0.383071, 0.376141, 0.376141, 1)
+metallic = 0.16
+roughness = 0.57
+
 [sub_resource type="BoxMesh" id="BoxMesh_qqha3"]
+material = SubResource("StandardMaterial3D_iyym7")
 size = Vector3(39.715, 1, 52.525)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_my7fn"]
+points = PackedVector3Array(19.8575, 0.5, 26.2625, 19.8575, -0.5, 26.2625, 19.8575, 0.5, -26.2625, -19.8575, 0.5, 26.2625, -19.8575, -0.5, 26.2625, 19.8575, -0.5, -26.2625, -19.8575, 0.5, -26.2625, -19.8575, -0.5, -26.2625)
 
 [node name="main_game" type="Node3D"]
 
@@ -22,10 +33,16 @@ size = Vector3(39.715, 1, 52.525)
 environment = SubResource("Environment_jfjn2")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(-0.866023, -0.433016, 0.250001, -0.161646, 0.715615, 0.679533, -0.473153, 0.54808, -0.689735, 0.420146, 15.8937, -18.0958)
 shadow_enabled = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="player" parent="." instance=ExtResource("1_4t4f1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.17421, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
 mesh = SubResource("BoxMesh_qqha3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
+shape = SubResource("ConvexPolygonShape3D_my7fn")
