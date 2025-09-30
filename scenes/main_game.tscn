@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://uumwrmnqm851"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qrv2r"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_m5h1w"]
+sky_material = SubResource("ProceduralSkyMaterial_qrv2r")
+
+[sub_resource type="Environment" id="Environment_jfjn2"]
+background_mode = 2
+sky = SubResource("Sky_m5h1w")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_qqha3"]
+size = Vector3(39.715, 1, 52.525)
+
+[node name="main_game" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jfjn2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_qqha3")
