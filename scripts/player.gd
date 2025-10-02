@@ -1,5 +1,6 @@
 class_name Player extends CharacterBody3D
 
+# MOVEMENT VARIABLES
 var speed
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 8.0
@@ -11,26 +12,48 @@ const BOB_FREQ = 2.4
 const BOB_AMP = 0.08
 var t_bob = 0.0
 
-#fov variables
+# FOV
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
 
 var gravity = 9.8
 
+# NODES
 @onready var head = $head
 @onready var camera = $head/Camera3D
+@onready var inventory_node = $Inventory
+@onready var hand = $hand
 
+# INVENTORY
+var inventory = []
+var max_inv_items = 5
+var curr_inv_idx = 0 # the one to display
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Globals.player = self
+
+func _process(delta: float) -> void:
+	if len(inventory) >= curr_inv_idx+1:
+		inventory[curr_inv_idx].visible = true
+		inventory[curr_inv_idx].global_position = hand.global_position
+
+	if Input.is_key_pressed(KEY_1):
+		switch_item(0)
+	elif Input.is_key_pressed(KEY_2):
+		switch_item(1)
+	elif Input.is_key_pressed(KEY_3):
+		switch_item(2)
+	elif Input.is_key_pressed(KEY_4):
+		switch_item(3)
+	elif Input.is_key_pressed(KEY_5):
+		switch_item(4)
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
-
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -67,9 +90,24 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-
 func _headbob(time) -> Vector3:
 	var pos = Vector3.ZERO
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
+
+func take(coin_to_take: Node3D):
+	if can_take():
+		inventory.append(coin_to_take)
+		coin_to_take.reparent(inventory_node)
+		coin_to_take.visible = false
+		coin_to_take.animation_player.stop()
+		coin_to_take.is_free = false
+
+func can_take():
+	return len(inventory) < max_inv_items
+
+func switch_item(n: int):
+	if len(inventory) >= curr_inv_idx+1:
+		inventory[curr_inv_idx].visible = false
+	curr_inv_idx = n
