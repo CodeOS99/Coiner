@@ -10,7 +10,7 @@ height = 3.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_d4aqr"]
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_kks38")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

@@ -1,7 +1,71 @@
-[gd_scene load_steps=2 format=3 uid="uid://blnrpnx8w0p2a"]
+[gd_scene load_steps=8 format=3 uid="uid://blnrpnx8w0p2a"]
 
 [ext_resource type="PackedScene" uid="uid://buup0vnw3tnp5" path="res://assets/bronzeCoin/bronzeCoin.blend" id="1_pqg5s"]
+[ext_resource type="Script" path="res://scripts/bronze_coin.gd" id="1_v1elm"]
+[ext_resource type="Material" uid="uid://dntp0dphrcgpx" path="res://resources/materials/outline_material.tres" id="2_w5i34"]
+
+[sub_resource type="Animation" id="Animation_3qubx"]
+resource_name = "idle"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -0.5),
+"update": 0,
+"values": [Vector3(0, 2.083, 0), Vector3(0, -2.083, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yr8ro"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.083, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2vv54"]
+_data = {
+"RESET": SubResource("Animation_yr8ro"),
+"idle": SubResource("Animation_3qubx")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jfpyr"]
+radius = 3.51705
 
 [node name="bronzeCoin" type="Node3D"]
+script = ExtResource("1_v1elm")
+outline_material = ExtResource("2_w5i34")
 
-[node name="bronzeCoin" parent="." instance=ExtResource("1_pqg5s")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2vv54")
+}
+autoplay = "idle"
+
+[node name="mesh" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.083, 0)
+
+[node name="bronzeCoinMain" parent="mesh" instance=ExtResource("1_pqg5s")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_jfpyr")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+
+[editable path="mesh/bronzeCoinMain"]
