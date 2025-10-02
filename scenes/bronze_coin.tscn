@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://blnrpnx8w0p2a"]
+
+[ext_resource type="PackedScene" uid="uid://buup0vnw3tnp5" path="res://assets/bronzeCoin/bronzeCoin.blend" id="1_pqg5s"]
+
+[node name="bronzeCoin" type="Node3D"]
+
+[node name="bronzeCoin" parent="." instance=ExtResource("1_pqg5s")]

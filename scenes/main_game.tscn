@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://uumwrmnqm851"]
+[gd_scene load_steps=9 format=3 uid="uid://uumwrmnqm851"]
 
 [ext_resource type="PackedScene" uid="uid://ki78iqhlmc1a" path="res://scenes/player.tscn" id="1_4t4f1"]
+[ext_resource type="PackedScene" uid="uid://blnrpnx8w0p2a" path="res://scenes/bronze_coin.tscn" id="1_ovavi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qrv2r"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -28,6 +29,9 @@ size = Vector3(39.715, 1, 52.525)
 points = PackedVector3Array(19.8575, 0.5, 26.2625, 19.8575, -0.5, 26.2625, 19.8575, 0.5, -26.2625, -19.8575, 0.5, 26.2625, -19.8575, -0.5, 26.2625, 19.8575, -0.5, -26.2625, -19.8575, 0.5, -26.2625, -19.8575, -0.5, -26.2625)
 
 [node name="main_game" type="Node3D"]
+
+[node name="bronzeCoin" parent="." instance=ExtResource("1_ovavi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.67276, 4.03812, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jfjn2")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ki78iqhlmc1a"]
+[gd_scene load_steps=5 format=3 uid="uid://ki78iqhlmc1a"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kks38"]
 
@@ -7,6 +7,8 @@ height = 3.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ggyth"]
 height = 3.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_d4aqr"]
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("1_kks38")
@@ -22,3 +24,6 @@ shape = SubResource("CapsuleShape3D_ggyth")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06503, 0)
 
 [node name="Camera3D" type="Camera3D" parent="head"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_d4aqr")
