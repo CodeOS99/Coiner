@@ -31,7 +31,7 @@ points = PackedVector3Array(19.8575, 0.5, 26.2625, 19.8575, -0.5, 26.2625, 19.85
 [node name="main_game" type="Node3D"]
 
 [node name="bronzeCoin" parent="." instance=ExtResource("1_ovavi")]
-transform = Transform3D(0.595, 0, 0, 0, 0.595, 0, 0, 0, 0.595, -7.67276, 2.44139, 0)
+transform = Transform3D(0.595, 0, 0, 0, 0.595, 0, 0, 0, 0.595, 2.32724, 2.44139, -10)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jfjn2")

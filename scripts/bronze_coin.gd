@@ -3,6 +3,7 @@ extends Node3D
 @export var outline_material: Material
 
 @onready var mesh: MeshInstance3D = $mesh/bronzeCoinMain/Cylinder
+@onready var display_label = $mesh/display_label
 
 func _process(delta):
 	var target = Globals.player.global_transform.origin
@@ -15,7 +16,9 @@ func _process(delta):
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		mesh.material_overlay = outline_material
+		display_label.visible = true
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		mesh.material_overlay = null
+		display_label.visible = false

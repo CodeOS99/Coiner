@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://blnrpnx8w0p2a"]
+[gd_scene load_steps=9 format=3 uid="uid://blnrpnx8w0p2a"]
 
 [ext_resource type="PackedScene" uid="uid://buup0vnw3tnp5" path="res://assets/bronzeCoin/bronzeCoin.blend" id="1_pqg5s"]
 [ext_resource type="Script" path="res://scripts/bronze_coin.gd" id="1_v1elm"]
 [ext_resource type="Material" uid="uid://dntp0dphrcgpx" path="res://resources/materials/outline_material.tres" id="2_w5i34"]
+[ext_resource type="PackedScene" uid="uid://bekfugtkub4hj" path="res://scenes/display_label.tscn" id="3_2acpv"]
 
 [sub_resource type="Animation" id="Animation_3qubx"]
 resource_name = "idle"
@@ -42,7 +43,7 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jfpyr"]
-radius = 3.51705
+radius = 4.90326
 
 [node name="bronzeCoin" type="Node3D"]
 script = ExtResource("1_v1elm")
@@ -56,6 +57,10 @@ autoplay = "idle"
 
 [node name="mesh" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.083, 0)
+
+[node name="display_label" parent="mesh" instance=ExtResource("3_2acpv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19123, 0)
+visible = false
 
 [node name="bronzeCoinMain" parent="mesh" instance=ExtResource("1_pqg5s")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
