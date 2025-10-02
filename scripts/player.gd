@@ -22,7 +22,7 @@ var gravity = 9.8
 @onready var head = $head
 @onready var camera = $head/Camera3D
 @onready var inventory_node = $Inventory
-@onready var hand = $hand
+@onready var hand = $head/hand
 
 # INVENTORY
 var inventory = []
