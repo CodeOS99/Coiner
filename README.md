@@ -13,7 +13,7 @@ The game is simple, just collect coins and give it to the coin eater.
 
 wasd and space to move and jump respectively
 
-ctrl to sprint
+shift to sprint
 
 release e to interact(pickup coin or give coin)
 
