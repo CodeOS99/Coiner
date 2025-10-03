@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4gph7o3aaqln"]
+
+[ext_resource type="AudioStream" uid="uid://c5w30tqocyonk" path="res://assets/music/win.wav" id="1_u83wn"]
+[ext_resource type="Texture2D" uid="uid://f2mxnkh50drh" path="res://assets/coinerwin.png" id="2_hyaj1"]
+
+[node name="win" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_u83wn")
+autoplay = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hyaj1")

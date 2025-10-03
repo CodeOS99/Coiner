@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqwc852rljy27"]
+[gd_scene load_steps=13 format=3 uid="uid://bqwc852rljy27"]
 
 [ext_resource type="Script" path="res://scripts/more_offerings_button.gd" id="1_16iq3"]
 [ext_resource type="Script" path="res://scripts/shop_scene.gd" id="1_gyu88"]
@@ -7,8 +7,29 @@
 [ext_resource type="AudioStream" uid="uid://cj7mu8kgjcwgw" path="res://assets/music/shop.wav" id="2_vjodi"]
 [ext_resource type="Script" path="res://scripts/more_time_button.gd" id="3_xkvrb"]
 [ext_resource type="Script" path="res://scripts/continue_button.gd" id="4_2u0wg"]
+[ext_resource type="Script" path="res://scripts/win_button.gd" id="8_07xf4"]
 
-[node name="shop_scene" type="Node3D"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_x15fl"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cf2fy"]
+width = 64
+height = 64
+noise = SubResource("FastNoiseLite_x15fl")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ngquu"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ka316"]
+width = 64
+height = 64
+noise = SubResource("FastNoiseLite_ngquu")
+
+[node name="shop_scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_gyu88")
 
 [node name="Shop" type="AudioStreamPlayer" parent="."]
@@ -17,24 +38,16 @@ autoplay = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1151.0
-offset_bottom = 653.0
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -2.0
-offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_syqx5")
 
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
+[node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -47,7 +60,7 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 100
 text = "SHOP"
 
-[node name="continueButton" type="Button" parent="CanvasLayer/Control"]
+[node name="continueButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -62,7 +75,7 @@ theme_override_font_sizes/font_size = 25
 text = "Continue ->"
 script = ExtResource("4_2u0wg")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -77,25 +90,70 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="moreOfferingsButton" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="moreOfferingsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "+2 offerings(Cost:15)"
 script = ExtResource("1_16iq3")
 
-[node name="moreSpeedButton" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="moreSpeedButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "+speed(cost:10)"
 script = ExtResource("2_axg8d")
 
-[node name="moreTimeButton" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="moreTimeButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "+10 time(Cost:20)"
 script = ExtResource("3_xkvrb")
 
-[connection signal="pressed" from="CanvasLayer/Control/continueButton" to="CanvasLayer/Control/continueButton" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/moreOfferingsButton" to="CanvasLayer/Control/VBoxContainer/moreOfferingsButton" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/moreSpeedButton" to="CanvasLayer/Control/VBoxContainer/moreSpeedButton" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/moreTimeButton" to="CanvasLayer/Control/VBoxContainer/moreTimeButton" method="_on_pressed"]
+[node name="winButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "...win?(Cost:1000)"
+script = ExtResource("8_07xf4")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -239.0
+offset_bottom = 320.0
+grow_horizontal = 0
+texture = SubResource("NoiseTexture2D_cf2fy")
+
+[node name="Label" type="Label" parent="TextureRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.992
+anchor_bottom = 1.0
+offset_right = -0.0880127
+offset_bottom = -42.0
+text = "please 
+ignore
+:D"
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.252
+anchor_bottom = 0.608
+offset_right = -0.304016
+offset_bottom = 0.0159607
+texture = SubResource("NoiseTexture2D_ka316")
+
+[node name="Label" type="Label" parent="TextureRect3"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 32.0
+text = "I FIXED BOTH OF
+THESE BUT CAN'T
+BE BOTHERED TO 
+GO BACK TO MS PAINT!"
+
+[connection signal="pressed" from="continueButton" to="continueButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/moreOfferingsButton" to="VBoxContainer/moreOfferingsButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/moreSpeedButton" to="VBoxContainer/moreSpeedButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/moreTimeButton" to="VBoxContainer/moreTimeButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/winButton" to="VBoxContainer/winButton" method="_on_pressed"]
