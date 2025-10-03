@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://4rm4t5tuy6ea"]
+
+[ext_resource type="ArrayMesh" uid="uid://cdkeqt5uimlns" path="res://assets/grass.obj" id="1_mfecw"]
+
+[sub_resource type="MultiMesh" id="MultiMesh_p2dsb"]
+
+[node name="grass" type="MultiMeshInstance3D"]
+multimesh = SubResource("MultiMesh_p2dsb")
+
+[node name="Grass" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_mfecw")

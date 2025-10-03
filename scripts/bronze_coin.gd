@@ -1,5 +1,7 @@
 extends Node3D
 
+const value: int = 1
+
 @export var outline_material: Material
 
 @onready var mesh: MeshInstance3D = $mesh/bronzeCoinMain/Cylinder
@@ -43,3 +45,7 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 		mesh.material_overlay = null
 		display_label.visible = false
 		player_in_range = false
+
+func give():
+	Globals.offerings += value
+	queue_free()

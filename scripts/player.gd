@@ -34,7 +34,7 @@ func _ready():
 	Globals.player = self
 
 func _process(delta: float) -> void:
-	if len(inventory) >= curr_inv_idx+1:
+	if holding_coin():
 		inventory[curr_inv_idx].visible = true
 		inventory[curr_inv_idx].global_position = hand.global_position
 
@@ -104,10 +104,18 @@ func take(coin_to_take: Node3D):
 		coin_to_take.animation_player.stop()
 		coin_to_take.is_free = false
 
+func holding_coin():
+	return len(inventory) >= curr_inv_idx+1
+
 func can_take():
 	return len(inventory) < max_inv_items
 
 func switch_item(n: int):
-	if len(inventory) >= curr_inv_idx+1:
+	if holding_coin():
 		inventory[curr_inv_idx].visible = false
 	curr_inv_idx = n
+
+func give():
+	if holding_coin():
+		inventory[curr_inv_idx].give()
+		inventory.pop_at(curr_inv_idx)
