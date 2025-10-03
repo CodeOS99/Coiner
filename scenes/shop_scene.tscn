@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqwc852rljy27"]
+
+[ext_resource type="Script" path="res://scripts/more_offerings_button.gd" id="1_16iq3"]
+[ext_resource type="Script" path="res://scripts/shop_scene.gd" id="1_gyu88"]
+[ext_resource type="Script" path="res://scripts/more_speed_button.gd" id="2_axg8d"]
+[ext_resource type="Texture2D" uid="uid://b1xnyof87dxjq" path="res://assets/shop_bg.png" id="2_syqx5"]
+[ext_resource type="Script" path="res://scripts/more_time_button.gd" id="3_xkvrb"]
+[ext_resource type="Script" path="res://scripts/continue_button.gd" id="4_2u0wg"]
+
+[node name="shop_scene" type="Node3D"]
+script = ExtResource("1_gyu88")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1151.0
+offset_bottom = 653.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_syqx5")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -214.5
+offset_top = 76.0
+offset_right = 324.5
+offset_bottom = 277.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 100
+text = "SHOP"
+
+[node name="continueButton" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -304.0
+offset_top = -59.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+text = "Continue ->"
+script = ExtResource("4_2u0wg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -266.5
+offset_top = -4.5
+offset_right = 428.5
+offset_bottom = 222.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="moreOfferingsButton" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "+2 offerings(Cost:15)"
+script = ExtResource("1_16iq3")
+
+[node name="moreSpeedButton" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "+10 speed(cost:10)"
+script = ExtResource("2_axg8d")
+
+[node name="moreTimeButton" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "+10 time(Cost:20)"
+script = ExtResource("3_xkvrb")
+
+[connection signal="pressed" from="CanvasLayer/Control/continueButton" to="CanvasLayer/Control/continueButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/moreOfferingsButton" to="CanvasLayer/Control/VBoxContainer/moreOfferingsButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/moreSpeedButton" to="CanvasLayer/Control/VBoxContainer/moreSpeedButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/moreTimeButton" to="CanvasLayer/Control/VBoxContainer/moreTimeButton" method="_on_pressed"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ba68w2kuwe5t5"]
+[gd_scene load_steps=3 format=3 uid="uid://ba68w2kuwe5t5"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_nhvpp"]
+[ext_resource type="Texture2D" uid="uid://jwv7y0eoexj0" path="res://assets/coinerMainBg.png" id="2_e02js"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,15 +12,28 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nhvpp")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_e02js")
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -60.5
-offset_right = 60.5
-offset_bottom = 32.0
+offset_left = -456.0
+offset_top = 93.0
+offset_right = 300.0
+offset_bottom = 294.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 100
 text = "COINER"
 

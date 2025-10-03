@@ -2,10 +2,10 @@ class_name Player extends CharacterBody3D
 
 # MOVEMENT VARIABLES
 var speed
-const WALK_SPEED = 5.0
-const SPRINT_SPEED = 8.0
+var WALK_SPEED = 5.0
+var SPRINT_SPEED = 8.0
 const JUMP_VELOCITY = 10
-const SENSITIVITY = 0.004
+var SENSITIVITY = 0.004
 
 #bob variables
 const BOB_FREQ = 2.4
@@ -32,6 +32,8 @@ var curr_inv_idx = 0 # the one to display
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Globals.player = self
+	WALK_SPEED += Globals.boost_speed
+	SPRINT_SPEED += Globals.boost_speed
 
 func _process(delta: float) -> void:
 	if holding_coin():
@@ -119,3 +121,6 @@ func give():
 	if holding_coin():
 		inventory[curr_inv_idx].give()
 		inventory.pop_at(curr_inv_idx)
+
+func _on_timer_timeout() -> void:
+	get_tree().change_scene_to_file("res://scenes/shop_scene.tscn")

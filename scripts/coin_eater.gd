@@ -14,6 +14,7 @@ func _process(delta):
 
 func handle_input():
 	if Input.is_action_just_released("use"):
+		Globals.offerings += Globals.boost_offerings
 		Globals.player.give()
 
 func _on_coin_collecting_area_body_entered(body: Node3D) -> void:

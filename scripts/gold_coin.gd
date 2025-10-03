@@ -10,6 +10,11 @@ const value: int = 20
 
 var player_in_range: bool = false
 var is_free: bool = true # if its still in the environment like normal
+func _ready() -> void:
+	var time = randf_range(.0, .5)
+
+	await get_tree().create_timer(time).timeout
+	animation_player.play("idle")
 
 func _process(delta):
 	rotate_to_player()
