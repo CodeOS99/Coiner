@@ -4,7 +4,7 @@ class_name Player extends CharacterBody3D
 var speed
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 8.0
-const JUMP_VELOCITY = 4.8
+const JUMP_VELOCITY = 10
 const SENSITIVITY = 0.004
 
 #bob variables
@@ -16,7 +16,7 @@ var t_bob = 0.0
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
 
-var gravity = 9.8
+var gravity = 20
 
 # NODES
 @onready var head = $head

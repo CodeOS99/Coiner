@@ -1,9 +1,11 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://divrminxcnmiy"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://divrminxcnmiy"]
 
 [ext_resource type="Shader" uid="uid://ei6eah23w1jl" path="res://shaders/grass_blade_shader.tres" id="1_wqohs"]
+[ext_resource type="Texture2D" uid="uid://bkqv5mmp0ataj" path="res://images/icon.jpg" id="2_3gdkn"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_wqohs")
 shader_parameter/gradient_blend = 0.5
 shader_parameter/grass_tint = Color(0.3, 0.8, 0.3, 1)
+shader_parameter/grass_texture = ExtResource("2_3gdkn")

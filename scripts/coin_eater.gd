@@ -6,14 +6,18 @@ extends Node3D
 @onready var display_label = $model/useLabel
 
 var player_in_range: bool = false
+var can_give = true
 
 func _process(delta):	
 	if player_in_range:
 		handle_input()
 
 func handle_input():
-	if Input.is_action_pressed("use"):
+	if Input.is_action_pressed("use") and can_give:
 		Globals.player.give()
+		can_give = false
+	else:
+		can_give = true
 
 func _on_coin_collecting_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and Globals.player.holding_coin():
