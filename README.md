@@ -22,4 +22,7 @@ release e to interact(pickup coin or give coin)
 itch: https://codeos99.itch.io/coiner
 (no need for a download!)
 
+video demo: https://youtu.be/-5mheJREVAY
+(if the web version doesn't work for whatever reason)
+
 (Random tip: try checking inside the coin eater; the game rewards bravery!)
