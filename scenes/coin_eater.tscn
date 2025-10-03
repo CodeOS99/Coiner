@@ -185,7 +185,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_d57yb")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jyxfj"]
-size = Vector3(34.6361, 18.7383, 15.692)
+size = Vector3(39.2204, 18.7383, 20.8216)
 
 [node name="coinEater" type="Node3D"]
 script = ExtResource("1_n2mvi")
@@ -212,7 +212,7 @@ font_size = 100
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.2385, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="coinCollectingArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53841, 1.18066, 13.2952)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42206, 1.18066, 10.7304)
 shape = SubResource("BoxShape3D_jyxfj")
 
 [connection signal="body_entered" from="coinCollectingArea" to="." method="_on_coin_collecting_area_body_entered"]

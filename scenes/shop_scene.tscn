@@ -1,14 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqwc852rljy27"]
+[gd_scene load_steps=8 format=3 uid="uid://bqwc852rljy27"]
 
 [ext_resource type="Script" path="res://scripts/more_offerings_button.gd" id="1_16iq3"]
 [ext_resource type="Script" path="res://scripts/shop_scene.gd" id="1_gyu88"]
 [ext_resource type="Script" path="res://scripts/more_speed_button.gd" id="2_axg8d"]
 [ext_resource type="Texture2D" uid="uid://b1xnyof87dxjq" path="res://assets/shop_bg.png" id="2_syqx5"]
+[ext_resource type="AudioStream" uid="uid://cj7mu8kgjcwgw" path="res://assets/music/shop.wav" id="2_vjodi"]
 [ext_resource type="Script" path="res://scripts/more_time_button.gd" id="3_xkvrb"]
 [ext_resource type="Script" path="res://scripts/continue_button.gd" id="4_2u0wg"]
 
 [node name="shop_scene" type="Node3D"]
 script = ExtResource("1_gyu88")
+
+[node name="Shop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_vjodi")
+autoplay = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -81,7 +86,7 @@ script = ExtResource("1_16iq3")
 [node name="moreSpeedButton" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
-text = "+10 speed(cost:10)"
+text = "+speed(cost:10)"
 script = ExtResource("2_axg8d")
 
 [node name="moreTimeButton" type="Button" parent="CanvasLayer/Control/VBoxContainer"]

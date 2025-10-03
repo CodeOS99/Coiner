@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba68w2kuwe5t5"]
+[gd_scene load_steps=4 format=3 uid="uid://ba68w2kuwe5t5"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_nhvpp"]
 [ext_resource type="Texture2D" uid="uid://jwv7y0eoexj0" path="res://assets/coinerMainBg.png" id="2_e02js"]
+[ext_resource type="AudioStream" uid="uid://d2rr4r6n54jva" path="res://assets/music/main_menu.ogg" id="2_mqdns"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,6 +12,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nhvpp")
+
+[node name="Main" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mqdns")
+autoplay = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

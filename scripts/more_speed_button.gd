@@ -6,7 +6,7 @@ func _process(delta: float) -> void:
 	disabled = Globals.offerings < cost
 
 func _on_pressed() -> void:
-	Globals.boost_speed += 10
+	Globals.boost_speed += 2
 	Globals.offerings -= cost
 	cost = ceil(cost * 1.25)
-	text = "+10 speed(Cost:" + str(cost) + ")"
+	text = "+speed(Cost:" + str(cost) + ")"

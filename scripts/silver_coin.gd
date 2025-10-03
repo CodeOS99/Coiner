@@ -32,7 +32,7 @@ func rotate_to_player():
 	look_at(pos - direction, Vector3.UP)
 
 func handle_input():
-	if Input.is_action_pressed("use"):
+	if Input.is_action_just_released("use"):
 		Globals.player.take(self)
 		is_free = false
 
