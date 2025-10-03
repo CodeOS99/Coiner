@@ -13,11 +13,8 @@ func _process(delta):
 		handle_input()
 
 func handle_input():
-	if Input.is_action_pressed("use") and can_give:
+	if Input.is_action_just_released("use"):
 		Globals.player.give()
-		can_give = false
-	else:
-		can_give = true
 
 func _on_coin_collecting_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and Globals.player.holding_coin():
