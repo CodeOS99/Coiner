@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=4 uid="uid://uumwrmnqm851"]
+[gd_scene load_steps=14 format=4 uid="uid://uumwrmnqm851"]
 
 [ext_resource type="PackedScene" uid="uid://ki78iqhlmc1a" path="res://scenes/player.tscn" id="1_4t4f1"]
 [ext_resource type="PackedScene" uid="uid://dq8s16eq7tkmn" path="res://scenes/coin_eater.tscn" id="1_8ctke"]
 [ext_resource type="PackedScene" uid="uid://blnrpnx8w0p2a" path="res://scenes/bronze_coin.tscn" id="1_ovavi"]
 [ext_resource type="Material" uid="uid://divrminxcnmiy" path="res://shaders/grass_blade_shade_mat.tres" id="4_acsfe"]
+[ext_resource type="PackedScene" uid="uid://be433lrhmqyfq" path="res://scenes/silver_coin.tscn" id="5_php21"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qrv2r"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -82,3 +83,6 @@ mesh = SubResource("ArrayMesh_hnk2b")
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="."]
 multimesh = SubResource("MultiMesh_tqe5o")
+
+[node name="silver_coin" parent="MultiMeshInstance3D" instance=ExtResource("5_php21")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.716, -9.62264)

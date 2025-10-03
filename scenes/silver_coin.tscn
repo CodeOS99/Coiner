@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://be433lrhmqyfq"]
+
+[ext_resource type="PackedScene" uid="uid://cpwncval3fd0b" path="res://assets/silverCoin/Untitled.blend" id="1_a2msb"]
+[ext_resource type="Script" path="res://scripts/silver_coin.gd" id="1_v0t58"]
+[ext_resource type="PackedScene" uid="uid://bekfugtkub4hj" path="res://scenes/display_label.tscn" id="2_yr3ky"]
+
+[sub_resource type="Animation" id="Animation_3qubx"]
+resource_name = "idle"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -0.5),
+"update": 0,
+"values": [Vector3(0, 2.083, 0), Vector3(0, -2.083, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yr8ro"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.083, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2vv54"]
+_data = {
+"RESET": SubResource("Animation_yr8ro"),
+"idle": SubResource("Animation_3qubx")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_agvbk"]
+radius = 6.0
+
+[node name="silver_coin" type="Node3D"]
+script = ExtResource("1_v0t58")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2vv54")
+}
+autoplay = "idle"
+
+[node name="mesh" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.083, 0)
+
+[node name="model" parent="mesh" instance=ExtResource("1_a2msb")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="display_label" parent="mesh" instance=ExtResource("2_yr3ky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19123, 0)
+visible = false
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_agvbk")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
